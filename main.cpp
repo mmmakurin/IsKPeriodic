@@ -2,11 +2,11 @@
 #include <string>
 using namespace std;
 
-void computeLPS(string pat, int* lps) // Префиксная функция и формирование массива lps для алгоритма КМП
+void computeLPS(string pat, int* lps)// Prefix function and lps array formation for the KMP algorithm
 {
     int j = 0;
 
-    lps[0] = 0; // lps[0] всегда 0 
+    lps[0] = 0; // lps[0] is always 0 
 
     int i = 1;
     while (i < pat.size()) {
@@ -29,15 +29,15 @@ void computeLPS(string pat, int* lps) // Префиксная функция и формирование масси
     }
 }
 
-void IsKPeriodic(int K, const string& txt) // функция проверки кратности на основе алгоритма КМП
+void IsKPeriodic(int K, const string& txt) // multiplicity check function based on the KMP algorithm
 {
-    if (K < 1) // проверка условия K > 0
+    if (K < 1) // checking the condition K > 0
     {
-        cout << "K должно быть больше 0" << endl;
+        cout << "K must be greater than 0" << endl;
     }
     else
     {
-        string pat; // формируем подстроку, беря начальные символы строки по колличеству К
+        string pat; // form a substring by taking the initial characters of the string by the number К
         for (int i = 0; i < K; ++i)
             pat.push_back(txt[i]);
 
@@ -55,7 +55,7 @@ void IsKPeriodic(int K, const string& txt) // функция проверки кратности на осно
                 i++;
             }
             if (j == pat.size()) {
-                value++; // считаем совпадения
+                value++; // counting coincidences
                 j = lps[j - 1];
             }
 
@@ -70,10 +70,10 @@ void IsKPeriodic(int K, const string& txt) // функция проверки кратности на осно
                 }
             }
         }
-        if (K * value == txt.size()) // если количество найденных совпадений, умноженное на К, равно длине строки, то строка кратна К
-            cout << "Cтрока " << txt << " кратна " << K << endl;
+        if (K * value == txt.size()) // if the number of matches found multiplied by K is equal to the length of the string, then the string is a multiple of K
+            cout << "The string " << txt << " is a multiple of " << K << endl;
         else 
-            cout << "Cтрока " << txt << " не кратна " << K << endl; // иначе не кратна
+            cout << "Cтрока " << txt << " is not a multiple of " << K << endl; // otherwise it is not a multiple
         delete[] lps;
     }
 }
@@ -81,8 +81,8 @@ void IsKPeriodic(int K, const string& txt) // функция проверки кратности на осно
 int main()
 {
     setlocale(LC_ALL, "");
-    string txt = "abcabcabcabcabcabc"; // проверяемая строка
-    int K = 3; // проверка строки на кратность
+    string txt = "abcabcabcabcabcabc"; // the string being checked
+    int K = 3; // checking the string for multiplicity
     IsKPeriodic(K, txt);
     return 0;
 }
