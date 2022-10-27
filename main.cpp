@@ -73,7 +73,7 @@ void IsKPeriodic(int K, const string& txt) // multiplicity check function based 
         if (K * value == txt.size()) // if the number of matches found multiplied by K is equal to the length of the string, then the string is a multiple of K
             cout << "The string " << txt << " is a multiple of " << K << endl;
         else 
-            cout << "Cтрока " << txt << " is not a multiple of " << K << endl; // otherwise it is not a multiple
+            cout << "The string " << txt << " is not a multiple of " << K << endl; // otherwise it is not a multiple
         delete[] lps;
     }
 }
